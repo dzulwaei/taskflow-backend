@@ -37,7 +37,7 @@ app.use(
 app.use(express.json());
 app.use(morgan("dev"));
 
-app.get("/", (req, res) => {
+app.get("/", (req, res) => {  
   res.json({ message: "TaskFlow API is running" });
 });
 
