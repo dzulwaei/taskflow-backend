@@ -29,7 +29,6 @@ const userSchema = new mongoose.Schema(
   { timestamps: true }
 );
 
-// ✅ FIXED: Removed next() - not needed in Mongoose v7+
 userSchema.pre("save", async function () {
   if (!this.isModified("password")) return;
   const salt = await bcrypt.genSalt(10);
