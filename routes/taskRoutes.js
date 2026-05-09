@@ -1,3 +1,7 @@
+/**
+ * Task route definitions.
+ * All task endpoints require authentication and provide CRUD operations.
+ */
 import express from "express";
 import protect from "../middleware/authMiddleware.js";
 import {
@@ -10,6 +14,7 @@ import {
 
 const router = express.Router();
 
+// All task routes require authentication
 router.use(protect);
 
 router.route("/").get(getTasks).post(createTask);

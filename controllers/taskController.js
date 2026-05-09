@@ -1,5 +1,10 @@
+/**
+ * Task controller.
+ * Implements task listing, retrieval, creation, update, and deletion.
+ */
 import Task from "../models/Task.js";
 
+// Retrieves task list filtered by query params and pagination
 export const getTasks = async (req, res, next) => {
   try {
     const {
@@ -51,6 +56,7 @@ export const getTasks = async (req, res, next) => {
   }
 };
 
+// Retrieves a single task by ID for the authenticated user
 export const getTaskById = async (req, res, next) => {
   try {
     const task = await Task.findOne({
@@ -69,6 +75,7 @@ export const getTaskById = async (req, res, next) => {
   }
 };
 
+// Creates a new task for the authenticated user
 export const createTask = async (req, res, next) => {
   try {
     const { title, description, status, priority, dueDate } = req.body;
@@ -93,6 +100,7 @@ export const createTask = async (req, res, next) => {
   }
 };
 
+// Updates an existing task owned by the authenticated user
 export const updateTask = async (req, res, next) => {
   try {
     const { title, description, status, priority, dueDate } = req.body;
@@ -126,6 +134,7 @@ export const updateTask = async (req, res, next) => {
   }
 };
 
+// Deletes a task belonging to the authenticated user
 export const deleteTask = async (req, res, next) => {
   try {
     const task = await Task.findOne({

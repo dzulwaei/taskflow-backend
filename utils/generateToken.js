@@ -1,3 +1,7 @@
+/**
+ * Utility for generating JWT access tokens.
+ * The token payload contains the authenticated user ID.
+ */
 import jwt from "jsonwebtoken";
 
 const generateToken = (userId) => {

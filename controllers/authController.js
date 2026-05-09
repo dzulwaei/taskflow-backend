@@ -1,6 +1,11 @@
+/**
+ * Authentication controller.
+ * Implements user registration, login, and profile retrieval.
+ */
 import User from "../models/User.js";
 import generateToken from "../utils/generateToken.js";
 
+// Handles new user registration
 export const registerUser = async (req, res, next) => {
   try {
     const { name, email, password } = req.body;
@@ -39,6 +44,7 @@ export const registerUser = async (req, res, next) => {
   }
 };
 
+// Authenticates users and issues JWT tokens
 export const loginUser = async (req, res, next) => {
   try {
     const { email, password } = req.body;
@@ -70,6 +76,7 @@ export const loginUser = async (req, res, next) => {
   }
 };
 
+// Returns the currently authenticated user's profile
 export const getMe = async (req, res, next) => {
   try {
     res.status(200).json({ user: req.user });

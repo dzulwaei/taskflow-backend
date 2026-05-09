@@ -1,3 +1,7 @@
+/**
+ * User model schema.
+ * Stores user authentication details and role metadata.
+ */
 import mongoose from "mongoose";
 import bcrypt from "bcryptjs";
 
@@ -29,12 +33,14 @@ const userSchema = new mongoose.Schema(
   { timestamps: true }
 );
 
+// Hash passwords before saving a user document
 userSchema.pre("save", async function () {
   if (!this.isModified("password")) return;
   const salt = await bcrypt.genSalt(10);
   this.password = await bcrypt.hash(this.password, salt);
 });
 
+// Compare submitted password with the stored hashed password
 userSchema.methods.matchPassword = async function (enteredPassword) {
   return await bcrypt.compare(enteredPassword, this.password);
 };

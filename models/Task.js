@@ -1,3 +1,7 @@
+/**
+ * Task model schema.
+ * Defines the shape of task documents stored in MongoDB.
+ */
 import mongoose from "mongoose";
 
 const taskSchema = new mongoose.Schema(
